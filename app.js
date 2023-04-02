@@ -60,9 +60,9 @@ VALUES
 
 //third api
 app.get("/players/:playerId/", async (req, res) => {
-  const { playerId } = request.params;
+  const { playerId } = req.params;
   const bringSpecificPlayer = `SELECT * FROM cricket_team WHERE
-     player_id = ${playerId} limit 1;`;
+     player_id = ${playerId};`;
   let specificPlayer = await db.get(bringSpecificPlayer);
   let temp = convertDbObjectToResponseObject(specificPlayer);
   res.send(temp);
